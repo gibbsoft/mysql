@@ -13,6 +13,7 @@ Role Variables
 
 * `mysql_bind_address` Defaults to 127.0.0.1
 * `mysql_port` Defaults to 3306
+* `mysql_root_password` Set this value to a new value. Defaults to changeme123.
 
 Dependencies
 ------------
