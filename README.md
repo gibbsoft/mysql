@@ -11,6 +11,8 @@ No external requirements.
 Role Variables
 --------------
 
+* `mysql_bind_address` Defaults to 127.0.0.1
+* `mysql_port` Defaults to 3306
 
 Dependencies
 ------------
