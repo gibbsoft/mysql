@@ -1,4 +1,4 @@
-Role Name
+mysql
 ========
 
 [![Build Status](https://drone-opsdev.rax.io/github.com/rack-roles/mysql/status.svg?branch=master)](https://drone-opsdev.rax.io/github.com/rack-roles/mysql)
@@ -20,6 +20,7 @@ Role Variables
 Dependencies
 ------------
 
+`Rackspace_Automation.holland` (Optional)
 
 Example Playbook
 -------------------------
