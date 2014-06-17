@@ -4,6 +4,19 @@
   fail: msg="mysql_root_password has not been defined."
   when: mysql_root_password is not defined
 
+- name: Include RedHat specific packages
+  include: RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: Include Debian specific packages
+  include: Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Check for unsupported target operating system
+  fail:
+    msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
+  when: mysql_supported_os is not defined
+
 - name: install packages
   apt: pkg={{ item }} state=installed
   with_items:
