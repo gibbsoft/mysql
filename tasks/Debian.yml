@@ -3,3 +3,16 @@
       mysql_supported_os: True
   set_fact:
     mysql_supported_os: True
+
+- name: install packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - python-mysqldb
+    - mysql-server
+
+- name: configure the service
+  template: src=my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode=0644
+  notify: restart mysql
+
+- name: ensure mysql is running
+  service: name=mysql state=started enabled=yes
