@@ -1,5 +1,8 @@
 ---
 # tasks file for mysql
+- name: check for the mysql_password variable
+  fail: msg="mysql_root_password has not been defined."
+  when: mysql_root_password is not defined
 
 - name: install packages
   apt: pkg={{ item }} state=installed
