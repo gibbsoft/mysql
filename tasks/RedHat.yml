@@ -7,7 +7,7 @@
 - name: install packages
   yum: pkg={{ item }} state=installed
   with_items:
-    - python-mysqldb
+    - MySQL-python
     - mysql-server
 
 - name: configure the service

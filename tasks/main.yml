@@ -17,19 +17,6 @@
     msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
   when: mysql_supported_os is not defined
 
-- name: install packages
-  apt: pkg={{ item }} state=installed
-  with_items:
-    - python-mysqldb
-    - mysql-server
-
-- name: configure the service
-  template: src=my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode=0644
-  notify: restart mysql
-
-- name: ensure mysql is running
-  service: name=mysql state=started enabled=yes
-
 - name: configure root user password
   mysql_user: name=root password={{ mysql_root_password }} state=present priv=*.*:ALL,GRANT
 
