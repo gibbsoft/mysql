@@ -14,7 +14,7 @@
   notify: restart mysql
 
 - name: Debian | setup replication options
-  template: src=replication.cnf.j2 dest=/etc/mysql/conf.d/replication.cnf owner=root group=root mode=0644
+  template: src=Debian-replication.cnf.j2 dest=/etc/mysql/conf.d/replication.cnf owner=root group=root mode=0644
   register: mysql_debian_conf
   when: mysql_replication
   notify: restart mysql
