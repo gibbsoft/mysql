@@ -1,3 +1,4 @@
+[mysqld]
 {% if mysql_replication and mysql_replication_role == "master" %}
 log-bin={{ mysql_log_bin }}
 expire-logs-days={{ mysql_expire_logs_days }}
