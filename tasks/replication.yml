@@ -3,6 +3,24 @@
   fail: msg="mysql_replication_password has not been defined."
   when: mysql_replication_password is not defined
 
-- name: Debian | setup configuration options for master
+- name: Debian | setup replication options
   template: src=replication.cnf.j2 dest=/etc/mysql/conf.d/replication.cnf owner=root group=root mode=0644
   notify: restart mysql
+
+- name: setup replication user
+  mysql_user:
+    name: "{{ mysql_replication_user }}"
+    password: "{{ mysql_replication_password }}"
+    priv: "*.*:REPLICATION SLAVE"
+    state: present
+  notify: restart mysql
+  when: mysql_role == "master"
+
+- name: configure slaves to replicate with master
+  mysql_replication:
+    mode: changemaster
+    master_host: "{{ mysql_master_host }}"
+    master_user: "{{ mysql_replication_user }}"
+    master_password: "{{ mysql_replication_password }}"
+  notify: restart mysql
+  when: mysql_role == "slave"
