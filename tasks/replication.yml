@@ -18,13 +18,13 @@
     priv: "*.*:REPLICATION SLAVE"
     state: present
   notify: restart mysql
-  when: mysql_role == "master"
+  when: mysql_replication_role == "master"
 
 - name: get master status for slave config
   mysql_replication: mode=getmaster
   delegate_to: "{{ mysql_master_host }}"
   register: replication_status
-  when: mysql_role == "slave"
+  when: mysql_replication_role == "slave"
 
 - name: configure slaves to replicate with master
   mysql_replication:
@@ -35,8 +35,8 @@
     master_log_file: "{{ replication_status.File }}"
     master_log_pos: "{{ replication_status.Position }}"
   notify: restart mysql
-  when: mysql_role == "slave"
+  when: mysql_replication_role == "slave"
 
 - name: start slave
   mysql_replication: mode=startslave
-  when: mysql_role == "slave"
+  when: mysql_replication_role == "slave"
