@@ -11,4 +11,4 @@
 
 - name: configure the service
   template: src=RedHat-my.cnf.j2 dest=/etc/my.cnf owner=root group=root mode=0644
-  notify: restart mysqld
+  notify: restart mysql
