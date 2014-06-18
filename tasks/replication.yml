@@ -1,4 +1,8 @@
 ---
+- name: check for the mysql_replication_password variable
+  fail: msg="mysql_replication_password has not been defined."
+  when: mysql_replication_password is not defined
+
 - name: setup configuration options for master
   template: src=replication.cnf.j2 dest=/etc/mysql/conf.d/replication.cnf owner=root group=root mode=0644
   notify: restart mysql

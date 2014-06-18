@@ -13,9 +13,17 @@ No external requirements.
 Role Variables
 --------------
 
+## Standard
 * `mysql_bind_address` Defaults to 127.0.0.1
 * `mysql_port` Defaults to 3306
 * `mysql_root_password` Set this value to a new value. Defaults to changeme123.
+
+## Replication
+* `mysql_replication` False
+* `mysql_replication_user` replicant
+* `mysql_log_bin` "/var/lib/mysql/binary-log"
+* `mysql_expire_logs_days` 5
+* `mysql_server_id` 1 (Override this on a per host basis)
 
 Dependencies
 ------------
