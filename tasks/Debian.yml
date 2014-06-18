@@ -12,3 +12,8 @@
 - name: Debian | configure the service
   template: src=Debian-my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode=0644
   notify: restart mysql
+
+- name: Debian | setup replication options
+  template: src=replication.cnf.j2 dest=/etc/mysql/conf.d/replication.cnf owner=root group=root mode=0644
+  when: mysql_replication
+  notify: restart mysql
