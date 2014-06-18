@@ -12,6 +12,7 @@
     name: "{{ mysql_replication_user }}"
     password: "{{ mysql_replication_password }}"
     priv: "*.*:REPLICATION SLAVE"
+    host: "%"
     state: present
   notify: restart mysql
   when: mysql_replication_role == "master"
