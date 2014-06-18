@@ -25,6 +25,7 @@ These values should be overridden.
 
 ## Replication
 * `mysql_replication` False
+* `mysql_replication_role` Set either `master` or `slave`.
 * `mysql_replication_user` replicant
 * `mysql_log_bin` "/var/lib/mysql/binary-log"
 * `mysql_expire_logs_days` 5
