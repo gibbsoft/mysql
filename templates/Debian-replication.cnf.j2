@@ -1,0 +1,12 @@
+{% if mysql_replication and mysql_replication_role == "master" %}
+log-bin={{ mysql_log_bin }}
+expire-logs-days={{ mysql_expire_logs_days }}
+server-id={{ mysql_server_id }}
+{% endif %}
+
+{% if mysql_replication and mysql_replication_role == "slave" %}
+relay-log={{ mysql_relay_log }}
+relay-log-space-limit={{ mysql_relay_log_space_limit }}
+read-only=1
+server-id={{ mysql_server_id }}
+{% endif %}
