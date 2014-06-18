@@ -29,6 +29,6 @@
 - name: configure the new password
   template: src=client_my.cnf.j2 dest=~/.my.cnf owner=root group=root mode=0600
 
-- name: check for replication
+- name: setup replication if set
   include: replication.yml
   when: mysql_replication

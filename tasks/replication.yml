@@ -20,11 +20,23 @@
   notify: restart mysql
   when: mysql_role == "master"
 
+- name: get master status for slave config
+  mysql_replication: mode=getmaster
+  delegate_to: "{{ mysql_master_host }}"
+  register: replication_status
+  when: mysql_role == "slave"
+
 - name: configure slaves to replicate with master
   mysql_replication:
     mode: changemaster
     master_host: "{{ mysql_master_host }}"
     master_user: "{{ mysql_replication_user }}"
     master_password: "{{ mysql_replication_password }}"
+    master_log_file: "{{ replication_status.File }}"
+    master_log_pos: "{{ replication_status.Position }}"
   notify: restart mysql
+  when: mysql_role == "slave"
+
+- name: start slave
+  mysql_replication: mode=startslave
   when: mysql_role == "slave"
