@@ -12,7 +12,7 @@
     - mysql-server
 
 - name: configure the service
-  template: src=my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode=0644
+  template: src=RedHat-my.cnf.j2 dest=/etc/my.cnf owner=root group=root mode=0644
   notify: restart mysqld
 
 - name: ensure mysql is running

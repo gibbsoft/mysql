@@ -1,1 +1,4 @@
 ---
+- name: setup configuration options for master
+  template: src=replication.cnf.j2 dest=/etc/mysql/conf.d/replication.cnf owner=root group=root mode=0644
+  notify: restart mysql
