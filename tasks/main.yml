@@ -20,8 +20,8 @@
     msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
   when: mysql_supported_os is not defined
 
-- name: ensure mysql is started
-  service: name={{ mysql_service_name }} state=started enabled=yes
+- name: ensure mysql is restarted
+  service: name={{ mysql_service_name }} state=restarted enabled=yes
 
 - name: configure root user password
   mysql_user: name=root password={{ mysql_root_password }} state=present priv=*.*:ALL,GRANT
