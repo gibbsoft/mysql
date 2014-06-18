@@ -7,13 +7,8 @@
 
 - name: install packages
   yum: pkg={{ item }} state=installed
-  with_items:
-    - MySQL-python
-    - mysql-server
+  with_items: mysql_packages
 
 - name: configure the service
   template: src=RedHat-my.cnf.j2 dest=/etc/my.cnf owner=root group=root mode=0644
   notify: restart mysqld
-
-- name: ensure mysql is running
-  service: name=mysqld state=started enabled=yes
