@@ -18,6 +18,7 @@ These values should be overridden.
 * `mysql_root_password`
 * `mysql_replication_password`
 * `mysql_server_id`
+* `mysql_master_host` The ip address slaves should access the master.
 
 ## Standard
 * `mysql_bind_address` Defaults to 127.0.0.1

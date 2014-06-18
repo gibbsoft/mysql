@@ -3,6 +3,10 @@
   fail: msg="mysql_replication_password has not been defined."
   when: mysql_replication_password is not defined
 
+- name: check for the mysql_master_host variable
+  fail: msg="mysql_master_host has not been defined."
+  when: mysql_master_host is not defined
+
 - name: Debian | setup replication options
   template: src=replication.cnf.j2 dest=/etc/mysql/conf.d/replication.cnf owner=root group=root mode=0644
   notify: restart mysql
