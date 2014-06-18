@@ -25,4 +25,4 @@
 
 - name: check for replication
   include: replication.yml
-  when: mysql_replication is True
+  when: mysql_replication
