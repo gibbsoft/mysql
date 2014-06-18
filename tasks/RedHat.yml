@@ -5,10 +5,10 @@
   set_fact:
     mysql_supported_os: True
 
-- name: install packages
+- name: RedHat | install packages
   yum: pkg={{ item }} state=installed
   with_items: mysql_packages
 
-- name: configure the service
+- name: RedHat | configure the service
   template: src=RedHat-my.cnf.j2 dest=/etc/my.cnf owner=root group=root mode=0644
   notify: restart mysql

@@ -5,13 +5,10 @@
   set_fact:
     mysql_supported_os: True
 
-- name: install packages
+- name: Debian | install packages
   apt: pkg={{ item }} state=installed
   with_items: mysql_packages
 
-- name: configure the service
+- name: Debian | configure the service
   template: src=Debian-my.cnf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode=0644
   notify: restart mysql
-
-- name: ensure mysql is running
-  service: name={{ mysql_service_name }} state=started enabled=yes
