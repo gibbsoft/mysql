@@ -1,8 +1,8 @@
 {% if "mysql_masters" in group_names %}
-{% mysql_replication_role == "master" %}
+{% set mysql_replication_role = "master" %}
 {% endif %}
 {% if "mysql_slaves" in group_names %}
-{% mysql_replication_role == "slave" %}
+{% set mysql_replication_role = "slave" %}
 {% endif %}
 
 [mysqld]
