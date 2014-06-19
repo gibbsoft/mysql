@@ -9,11 +9,11 @@
 
 - name: set slave role based on group
   set_fact: mysql_replication_role == "slave"
-  when: "'slave' in group_names"
+  when: "'mysql_slaves' in group_names"
 
 - name: set master role based on group
   set_fact: mysql_replication_role == "master"
-  when: "'master' in group_names"
+  when: "'mysql_masters' in group_names"
 
 - name: setup replication user
   mysql_user:

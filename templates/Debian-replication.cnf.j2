@@ -1,7 +1,7 @@
-{% if "master" in group_names %}
+{% if "mysql_masters" in group_names %}
 {% mysql_replication_role == "master" %}
 {% endif %}
-{% if "slave" in group_names %}
+{% if "mysql_slaves" in group_names %}
 {% mysql_replication_role == "slave" %}
 {% endif %}
 
