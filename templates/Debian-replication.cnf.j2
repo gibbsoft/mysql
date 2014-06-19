@@ -1,3 +1,10 @@
+{% if "master" in group_names %}
+{% mysql_replication_role == "master" %}
+{% endif %}
+{% if "slave" in group_names %}
+{% mysql_replication_role == "slave" %}
+{% endif %}
+
 [mysqld]
 {% if mysql_replication and mysql_replication_role == "master" %}
 log-bin={{ mysql_log_bin }}
