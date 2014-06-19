@@ -18,6 +18,7 @@ These values have to be overridden.
 * `mysql_root_password`
 * `mysql_replication_password`
 * `mysql_master_host` The ip address slaves should access the master.
+* `mysql_configure_slave` When setting up replication for the first time, set this to True.
 
 ## Standard
 * `mysql_bind_address` Defaults to 127.0.0.1

@@ -31,10 +31,10 @@
   register: replication_status
   when: mysql_replication_role == "slave"
 
-- name: get slave status
-  mysql_replication: mode=getslave
-  register: slave_status
-  when: mysql_replication_role == "slave"
+- name: stop slave for new configuration
+  mysql_replication:
+    mode: stopslave
+  when: mysql_replication_role == "slave" and mysql_configure_slave
 
 - name: configure slaves to replicate with master
   mysql_replication:
@@ -45,7 +45,7 @@
     master_log_file: "{{ replication_status.File }}"
     master_log_pos: "{{ replication_status.Position }}"
   notify: restart mysql
-  when: mysql_replication_role == "slave" and slave_status.Slave_IO_Running != "Yes"
+  when: mysql_replication_role == "slave" and mysql_configure_slave
 
 - name: start slave
   mysql_replication: mode=startslave
