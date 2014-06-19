@@ -17,7 +17,6 @@ Role Variables
 These values have to be overridden.
 * `mysql_root_password`
 * `mysql_replication_password`
-* `mysql_server_id`
 * `mysql_master_host` The ip address slaves should access the master.
 
 ## Standard
@@ -32,6 +31,7 @@ These values have to be overridden.
 * `mysql_expire_logs_days` 5
 * `mysql_relay_log` "/var/lib/mysql/relay-log"
 * `mysql_relay_log_space_limit` "4G"
+* `mysql_server_id`
 
 Dependencies
 ------------

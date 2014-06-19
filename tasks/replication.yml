@@ -8,11 +8,11 @@
   when: mysql_master_host is not defined
 
 - name: set slave role based on group
-  set_fact: mysql_replication_role == "slave"
+  set_fact: mysql_replication_role="slave"
   when: "'mysql_slaves' in group_names"
 
 - name: set master role based on group
-  set_fact: mysql_replication_role == "master"
+  set_fact: mysql_replication_role="master"
   when: "'mysql_masters' in group_names"
 
 - name: setup replication user
