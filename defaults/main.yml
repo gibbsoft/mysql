@@ -8,7 +8,6 @@ mysql_configure_slave: False
 mysql_replication_user: replicant
 mysql_log_bin: "/var/lib/mysql/binary-log"
 mysql_expire_logs_days: 5
-mysql_server_id: 1
 
 mysql_relay_log: "/var/lib/mysql/relay-log"
 mysql_relay_log_space_limit: "4G"
