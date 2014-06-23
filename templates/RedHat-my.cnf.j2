@@ -11,7 +11,9 @@ socket=/var/lib/mysql/mysql.sock
 
 [mysqld]
 port={{ mysql_port }}
-{% if mysql_bind_address is defined %}bind-address={{ mysql_bind_address }}{% endif %}
+{% if mysql_bind_address is defined %}
+bind-address={{ mysql_bind_address }}
+{% endif %}
 datadir=/var/lib/mysql
 socket=/var/lib/mysql/mysql.sock
 user=mysql
