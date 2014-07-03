@@ -15,7 +15,6 @@ Role Variables
 
 ## Mandatory
 These values have to be overridden.
-* `mysql_root_password`
 * `mysql_replication_password`
 * `mysql_master_host` The ip address slaves should access the master.
 * `mysql_configure_slave` When setting up replication for the first time, set this to True.
@@ -23,6 +22,7 @@ These values have to be overridden.
 ## Standard
 * `mysql_bind_address` Defaults to 127.0.0.1
 * `mysql_port` Defaults to 3306
+* `mysql_root_password` Defaults to a random value
 
 ## Replication
 * `mysql_replication` False
