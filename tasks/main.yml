@@ -21,6 +21,10 @@
   include: Debian.yml
   when: ansible_os_family == 'Debian'
 
+- name: Include Suse specific tasks
+  include: Suse.yml
+  when: ansible_os_family == 'Suse'
+
 - name: Check for unsupported target operating system
   fail:
     msg: "The operating system of the target machine ({{ inventory_hostname }}) is not currently supported."
