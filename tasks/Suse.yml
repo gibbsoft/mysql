@@ -7,7 +7,7 @@
 
 - name: Suse | install packages
   zypper: name={{ item }} state=installed
-  with_items: mysql_packages
+  with_items: "{{ mysql_packages }}"
   register: mysql_install
 
 - name: Suse | configure the service

@@ -7,7 +7,7 @@
 
 - name: Debian | install packages
   apt: pkg={{ item }} state=installed
-  with_items: mysql_packages
+  with_items: "{{ mysql_packages }}"
   register: mysql_install
 
 - name: Debian | configure the service

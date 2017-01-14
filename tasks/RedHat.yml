@@ -7,7 +7,7 @@
 
 - name: RedHat | install packages
   yum: pkg={{ item }} state=installed
-  with_items: mysql_packages
+  with_items: "{{ mysql_packages }}"
   register: mysql_install
 
 - name: RedHat | configure the service
